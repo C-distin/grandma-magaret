@@ -38,7 +38,7 @@ interface BookPageProps {
 	};
 }
 
-export default function Page({ params }: BookPageProps) {
+export default async function Page({ params }: BookPageProps) {
 	const nameId = useId();
 	const emailId = useId();
 	const messageId = useId();
