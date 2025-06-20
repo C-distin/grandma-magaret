@@ -49,11 +49,11 @@ export function AboutPage() {
             <div className="md:w-2/3">
               <h2 className="text-3xl font-bold text-gray-800 mb-6">About Margaret</h2>
               <p className="text-gray-700 mb-4">
-                Margaret E. Kuofie is a certified clinical research professional with over a decade of experience in healthcare [[9]].
+                Margaret E. Kuofie is a certified clinical research professional with over a decade of experience in healthcare.
                 Her writing blends scientific rigor with emotional depth, exploring themes of identity, resilience, and cultural duality.
               </p>
               <p className="text-gray-700 mb-4">
-                As the author of <em>"To Vow or Not to Vow"</em> and <em>"Behind Closed Doors: Guarding Your Dreams"</em>, she empowers readers to embrace their unspoken aspirations [[6]].
+                As the author of <em>"To Vow or Not to Vow"</em> and <em>"Behind Closed Doors: Guarding Your Dreams"</em>, she empowers readers to embrace their unspoken aspirations.
               </p>
               <div className="grid grid-cols-2 gap-4 mt-8">
                 <div className="flex items-center gap-3">
