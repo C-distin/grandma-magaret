@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
-import { motion } from "motion/react";
-import { BookOpen, Briefcase, Mail } from "lucide-react";
+import { BookOpen, Briefcase, Mail } from "lucide-react"
+import { motion } from "motion/react"
 
 export function AboutPage() {
   return (
@@ -15,9 +15,7 @@ export function AboutPage() {
       >
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-5xl font-bold mb-6">Margaret E. Kuofie</h1>
-          <p className="text-xl mb-8">
-            Author | Clinical Research Professional | Storyteller
-          </p>
+          <p className="text-xl mb-8 text-gray-100">Author | Clinical Research Professional | Storyteller</p>
           <motion.a
             href="#contact"
             whileHover={{ scale: 1.05 }}
@@ -40,20 +38,19 @@ export function AboutPage() {
             transition={{ delay: 0.3 }}
           >
             <div className="md:w-1/3">
-              <img
-                src="/margaret-profile.jpg"
-                alt="Margaret Kuofie"
-                className="rounded-lg shadow-lg w-full"
-              />
+              <img src="/margaret-profile.jpg" alt="Margaret Kuofie" className="rounded-lg shadow-lg w-full" />
             </div>
             <div className="md:w-2/3">
-              <h2 className="text-3xl font-bold text-gray-800 mb-6">About Margaret</h2>
-              <p className="text-gray-700 mb-4">
-                Margaret E. Kuofie is a certified clinical research professional with over a decade of experience in healthcare.
-                Her writing blends scientific rigor with emotional depth, exploring themes of identity, resilience, and cultural duality.
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">About Margaret</h2>
+              <p className="text-gray-800 mb-4">
+                Margaret E. Kuofie is a certified clinical research professional with over a decade of experience in
+                healthcare. Her writing blends scientific rigor with emotional depth, exploring themes of identity,
+                resilience, and cultural duality.
               </p>
-              <p className="text-gray-700 mb-4">
-                As the author of <em>"To Vow or Not to Vow"</em> and <em>"Behind Closed Doors: Guarding Your Dreams"</em>, she empowers readers to embrace their unspoken aspirations.
+              <p className="text-gray-800 mb-4">
+                As the author of <em>"To Vow or Not to Vow"</em> and{" "}
+                <em>"Behind Closed Doors: Guarding Your Dreams"</em>, she empowers readers to embrace their unspoken
+                aspirations.
               </p>
               <div className="grid grid-cols-2 gap-4 mt-8">
                 <div className="flex items-center gap-3">
@@ -70,5 +67,5 @@ export function AboutPage() {
         </div>
       </section>
     </div>
-  );
+  )
 }
