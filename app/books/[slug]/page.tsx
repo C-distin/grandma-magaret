@@ -24,7 +24,7 @@ const books = {
   },
 };
 
-export function BookPage({ params }: { params: { slug: string } }) {
+export function Page({ params }: { params: { slug: string } }) {
   const book = books[params.slug as keyof typeof books];
   if (!book) notFound();
 
