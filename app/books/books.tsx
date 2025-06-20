@@ -1,8 +1,8 @@
-"use client";
+"use client"
 
-import { motion } from "framer-motion";
-import { BookOpen, ExternalLink } from "lucide-react";
-import Link from "next/link";
+import { motion } from "framer-motion"
+import { BookOpen, ExternalLink } from "lucide-react"
+import Link from "next/link"
 
 const books = [
   {
@@ -17,7 +17,7 @@ const books = [
     cover: "/books/guarding-dreams.jpg",
     description: "A guide to nurturing unspoken aspirations and overcoming self-doubt.",
   },
-];
+]
 
 export function BooksPage() {
   return (
@@ -40,7 +40,7 @@ export function BooksPage() {
       {/* Books Grid */}
       <section className="py-16 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-800 mb-10">Featured Books</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-10">Featured Books</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {books.map((book, index) => (
               <motion.div
@@ -48,19 +48,15 @@ export function BooksPage() {
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2 * index }}
-                className="bg-gray-100 p-6 rounded-lg shadow-md flex flex-col md:flex-row items-start gap-6"
+                className="bg-white p-6 rounded-lg shadow-md flex flex-col md:flex-row items-start gap-6"
               >
-                <img
-                  src={book.cover}
-                  alt={book.title}
-                  className="w-32 h-48 object-cover rounded-md"
-                />
+                <img src={book.cover} alt={book.title} className="w-32 h-48 object-cover rounded-md" />
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">{book.title}</h3>
-                  <p className="text-gray-700 mb-4">{book.description}</p>
+                  <h3 className="text-xl font-semibold mb-2 text-gray-900">{book.title}</h3>
+                  <p className="text-gray-800 mb-4">{book.description}</p>
                   <Link
                     href={`/books/${book.slug}`}
-                    className="text-purple-600 hover:underline inline-flex items-center gap-1"
+                    className="text-purple-800 hover:underline inline-flex items-center gap-1"
                   >
                     Learn More <ExternalLink size={16} />
                   </Link>
@@ -79,19 +75,22 @@ export function BooksPage() {
             Margaret’s books are crafted using a blend of traditional storytelling and modern tools. Platforms like{" "}
             <a href="https://www.storyjumper.com" target="_blank" className="text-purple-600 hover:underline">
               StoryJumper
-            </a>and{" "}
+            </a>
+            and{" "}
             <a href="https://www.canva.com/ebook-maker/" target="_blank" className="text-purple-600 hover:underline">
               Canva’s eBook Maker
-            </a>inspire her creative process.
+            </a>
+            inspire her creative process.
           </p>
           <p className="text-gray-700">
             For self-publishing, she recommends{" "}
             <a href="https://www.lulu.com" target="_blank" className="text-purple-600 hover:underline">
               Lulu
-            </a>for affordable print-on-demand services.
+            </a>
+            for affordable print-on-demand services.
           </p>
         </div>
       </section>
     </div>
-  );
+  )
 }

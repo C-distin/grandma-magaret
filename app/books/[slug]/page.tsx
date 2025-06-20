@@ -85,10 +85,10 @@ export default async function Page({ params }: { params: { slug: string } }) {
 							priority
 						/>
 						<div>
-							<h2 className="text-2xl font-bold text-gray-800 mb-4">
+							<h2 className="text-2xl font-bold text-gray-900 mb-4">
 								{book.title}
 							</h2>
-							<p className="text-gray-700 mb-6">{book.details}</p>
+							<p className="text-gray-800 mb-6">{book.details}</p>
 							<a
 								href={book.buyLink}
 								target="_blank"
@@ -105,12 +105,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
 			{/* Contact Form */}
 			<section className="py-16 px-6 bg-gray-50">
 				<div className="max-w-3xl mx-auto">
-					<h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
+					<h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
 						Ask a Question
 					</h2>
 					<form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 						<div>
-							<label htmlFor={nameId} className="block text-gray-700 mb-2">
+							<label htmlFor={nameId} className="block text-gray-900 mb-2">
 								Name
 							</label>
 							<input
@@ -125,7 +125,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 							)}
 						</div>
 						<div>
-							<label htmlFor={emailId} className="block text-gray-700 mb-2">
+							<label htmlFor={emailId} className="block text-gray-900 mb-2">
 								Email
 							</label>
 							<input
@@ -141,7 +141,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 							)}
 						</div>
 						<div>
-							<label htmlFor={messageId} className="block text-gray-700 mb-2">
+							<label htmlFor={messageId} className="block text-gray-900 mb-2">
 								Message
 							</label>
 							<textarea

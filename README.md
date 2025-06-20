@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Grandma Margaret – Author & Speaker Website
+
+A modern, accessible website for author Margaret Kuofie, built with Next.js 14, TypeScript, and Tailwind CSS. Features include book showcases, speaking engagement info, contact forms, and a dashboard for managing stories and blogs.
+
+## Features
+
+- **Books:** Browse featured books with detailed pages and purchase links
+- **Speaking:** Learn about Margaret's talks, listen to audio samples, and book her for events
+- **Contact Forms:** Accessible, validated forms for questions and booking requests
+- **Dashboard:** Manage stories and blog posts (demo UI)
+- **Accessible Design:** High color contrast, semantic HTML, and keyboard-friendly navigation
+- **Responsive:** Looks great on all devices
 
 ## Getting Started
 
-First, run the development server:
+1. **Install dependencies:**
+   ```bash
+   bun install # or npm install, yarn, or pnpm
+   ```
+2. **Run the development server:**
+   ```bash
+   bun dev # or npm run dev, yarn dev, pnpm dev
+   ```
+3. **Open your browser:**
+   Visit [http://localhost:3000](http://localhost:3000)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Project Structure
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `app/` – Main app directory (Next.js routing)
+  - `books/` – Books listing and dynamic book pages
+  - `speaking/` – Speaking engagement info and booking
+  - `dashboard/` – Stories & blogs dashboard
+  - `contact/` – Contact form
+- `components/` – Reusable UI components
+- `public/` – Static assets (images, audio, etc.)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [Next.js 14](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Framer Motion](https://www.framer.com/motion/) (animations)
+- [Lucide React](https://lucide.dev/) (icons)
+- [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/) (form validation)
 
-## Learn More
+## Accessibility
 
-To learn more about Next.js, take a look at the following resources:
+- High color contrast for all text and UI elements
+- Semantic HTML and ARIA labels where needed
+- Keyboard navigation supported
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Deploy easily to [Vercel](https://vercel.com/) or your preferred platform.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+© 2025 Margaret Kuofie. Built with ❤️ using Next.js.
