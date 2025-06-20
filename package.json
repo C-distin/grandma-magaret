@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "biome:check": "biome check --write **/*.{ts,tsx}"
+    "biome:check": "biome check --write --unsafe **/*.{ts,tsx,js,jsx}"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
@@ -20,11 +20,12 @@
     "zod": "^3.25.57"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@biomejs/biome": "^2.0.0",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }

@@ -13,18 +13,24 @@ const books = {
     cover: "/books/vow-cover.jpg",
     description: "A cultural exploration of marriage vows and modern relationships.",
     details: "Dive into the complexities of commitment in a rapidly evolving world. This book blends research, personal anecdotes, and cultural analysis to question the relevance of traditional vows.",
-    buyLink: "https://example.com/buy-vow",
+    buyLink: "https://www.amazon.com/Vow-Not-Knowing-Implications-Vows/dp/1460007786/",
   },
   "behind-closed-doors": {
     title: "Behind Closed Doors: Guarding Your Dreams",
     cover: "/books/guarding-dreams.jpg",
     description: "A guide to nurturing unspoken aspirations and overcoming self-doubt.",
     details: "Margaret’s latest work explores the power of unspoken dreams and how to protect them from external pressures.",
-    buyLink: "https://example.com/buy-dreams",
+    buyLink: "https://www.amazon.com/Behind-Closed-Doors-Guarding-Dreams-ebook/dp/B0CKWH6RCC/",
   },
 };
 
-export default function Page({ params }: { params: { slug: string } }) {
+interface BookPageProps {
+  params: {
+    slug: string
+  }
+}
+
+export default function Page({ params }: BookPageProps) {
   const book = books[params.slug as keyof typeof books];
   if (!book) notFound();
 
