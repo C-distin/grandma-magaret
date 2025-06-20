@@ -32,13 +32,7 @@ const books = {
 	},
 };
 
-interface BookPageProps {
-	params: {
-		slug: string;
-	};
-}
-
-export default async function Page({ params }: BookPageProps) {
+export default async function Page({ params }: { params: { slug: string } }) {
 	const nameId = useId();
 	const emailId = useId();
 	const messageId = useId();
