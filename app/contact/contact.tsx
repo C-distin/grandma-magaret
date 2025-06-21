@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { BookOpen, Coffee, Mail, MapPin, PenTool, Phone, Send } from "lucide-react"
-import { motion } from "motion/react"
-import { useState } from "react"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { motion } from "motion/react";
+import { Mail, Phone, MapPin, Send, BookOpen, PenTool, Coffee } from "lucide-react";
 
 // Contact form validation schema
 const contactSchema = z.object({
@@ -14,13 +14,13 @@ const contactSchema = z.object({
   subject: z.string().min(5, "Subject must be at least 5 characters"),
   message: z.string().min(10, "Message must be at least 10 characters"),
   inquiryType: z.enum(["general", "collaboration", "speaking", "media"]),
-})
+});
 
-type ContactFormData = z.infer<typeof contactSchema>
+type ContactFormData = z.infer<typeof contactSchema>;
 
 export function ContactPage() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const {
     register,
@@ -32,22 +32,22 @@ export function ContactPage() {
     defaultValues: {
       inquiryType: "general",
     },
-  })
+  });
 
   const onSubmit = async (data: ContactFormData) => {
-    setIsSubmitting(true)
+    setIsSubmitting(true);
 
     // Simulate API call - replace with your server action
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
-    console.log("Contact form submitted:", data)
-    setIsSubmitted(true)
-    reset()
-    setIsSubmitting(false)
+    console.log("Contact form submitted:", data);
+    setIsSubmitted(true);
+    reset();
+    setIsSubmitting(false);
 
     // Reset success message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000)
-  }
+    setTimeout(() => setIsSubmitted(false), 5000);
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -57,22 +57,29 @@ export function ContactPage() {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-12 px-4">
-      <motion.div className="max-w-6xl mx-auto" variants={containerVariants} initial="hidden" animate="visible">
+      <motion.div
+        className="max-w-6xl mx-auto"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         {/* Header Section */}
         <motion.div variants={itemVariants} className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Get In Touch</h1>
-          <p className="text-xl text-gray-800 max-w-2xl mx-auto">
-            I'd love to hear from you. Whether you have a question about my work, want to collaborate, or just want to
-            say hello, don't hesitate to reach out.
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
+            Get In Touch
+          </h1>
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            I'd love to hear from you. Whether you have a question about my work,
+            want to collaborate, or just want to say hello, don't hesitate to reach out.
           </p>
         </motion.div>
 
@@ -80,8 +87,8 @@ export function ContactPage() {
           {/* Contact Information */}
           <motion.div variants={itemVariants} className="space-y-8">
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
-                <BookOpen className="text-blue-700" size={24} />
+              <h2 className="text-2xl font-semibold text-slate-800 mb-6 flex items-center gap-3">
+                <BookOpen className="text-blue-600" size={24} />
                 Let's Connect
               </h2>
 
@@ -89,24 +96,24 @@ export function ContactPage() {
                 <div className="flex items-start gap-4">
                   <Mail className="text-blue-600 mt-1" size={20} />
                   <div>
-                    <h3 className="font-medium text-gray-900">Email</h3>
-                    <p className="text-gray-800">hello@authorname.com</p>
+                    <h3 className="font-medium text-slate-800">Email</h3>
+                    <p className="text-slate-600">hello@authorname.com</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
                   <Phone className="text-blue-600 mt-1" size={20} />
                   <div>
-                    <h3 className="font-medium text-gray-900">Phone</h3>
-                    <p className="text-gray-800">+1 (555) 123-4567</p>
+                    <h3 className="font-medium text-slate-800">Phone</h3>
+                    <p className="text-slate-600">+1 (555) 123-4567</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
                   <MapPin className="text-blue-600 mt-1" size={20} />
                   <div>
-                    <h3 className="font-medium text-gray-900">Location</h3>
-                    <p className="text-gray-800">San Francisco, CA</p>
+                    <h3 className="font-medium text-slate-800">Location</h3>
+                    <p className="text-slate-600">San Francisco, CA</p>
                   </div>
                 </div>
               </div>
@@ -114,23 +121,23 @@ export function ContactPage() {
 
             {/* What I'm Open To */}
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">What I'm Open To</h3>
+              <h3 className="text-xl font-semibold text-slate-800 mb-4">What I'm Open To</h3>
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <PenTool className="text-green-600" size={18} />
-                  <span className="text-gray-800">Writing Collaborations</span>
+                  <span className="text-slate-700">Writing Collaborations</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Coffee className="text-orange-600" size={18} />
-                  <span className="text-gray-800">Speaking Engagements</span>
+                  <span className="text-slate-700">Speaking Engagements</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <BookOpen className="text-purple-600" size={18} />
-                  <span className="text-gray-800">Book Reviews & Interviews</span>
+                  <span className="text-slate-700">Book Reviews & Interviews</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="text-blue-600" size={18} />
-                  <span className="text-gray-800">Media Inquiries</span>
+                  <span className="text-slate-700">Media Inquiries</span>
                 </div>
               </div>
             </div>
@@ -139,7 +146,7 @@ export function ContactPage() {
           {/* Contact Form */}
           <motion.div variants={itemVariants}>
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-200">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-6">Send a Message</h2>
+              <h2 className="text-2xl font-semibold text-slate-800 mb-6">Send a Message</h2>
 
               {isSubmitted && (
                 <motion.div
@@ -147,14 +154,16 @@ export function ContactPage() {
                   animate={{ opacity: 1, scale: 1 }}
                   className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg"
                 >
-                  <p className="text-green-800 font-medium">Thank you for your message! I'll get back to you soon.</p>
+                  <p className="text-green-800 font-medium">
+                    Thank you for your message! I'll get back to you soon.
+                  </p>
                 </motion.div>
               )}
 
               <div className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-900 mb-2">
+                    <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">
                       Name
                     </label>
                     <input
@@ -164,11 +173,13 @@ export function ContactPage() {
                       className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                       placeholder="Your name"
                     />
-                    {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>}
+                    {errors.name && (
+                      <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
+                    )}
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-900 mb-2">
+                    <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
                       Email
                     </label>
                     <input
@@ -178,12 +189,14 @@ export function ContactPage() {
                       className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                       placeholder="your.email@example.com"
                     />
-                    {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>}
+                    {errors.email && (
+                      <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+                    )}
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="inquiryType" className="block text-sm font-medium text-gray-900 mb-2">
+                  <label htmlFor="inquiryType" className="block text-sm font-medium text-slate-700 mb-2">
                     Inquiry Type
                   </label>
                   <select
@@ -199,7 +212,7 @@ export function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-900 mb-2">
+                  <label htmlFor="subject" className="block text-sm font-medium text-slate-700 mb-2">
                     Subject
                   </label>
                   <input
@@ -209,11 +222,13 @@ export function ContactPage() {
                     className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                     placeholder="What's this about?"
                   />
-                  {errors.subject && <p className="mt-1 text-sm text-red-600">{errors.subject.message}</p>}
+                  {errors.subject && (
+                    <p className="mt-1 text-sm text-red-600">{errors.subject.message}</p>
+                  )}
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-900 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">
                     Message
                   </label>
                   <textarea
@@ -223,7 +238,9 @@ export function ContactPage() {
                     className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-vertical"
                     placeholder="Tell me more about your inquiry..."
                   />
-                  {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>}
+                  {errors.message && (
+                    <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
+                  )}
                 </div>
 
                 <motion.button
@@ -260,12 +277,12 @@ export function ContactPage() {
           variants={itemVariants}
           className="text-center mt-12 p-6 bg-blue-50 rounded-2xl border border-blue-200"
         >
-          <p className="text-blue-900">
-            I typically respond to messages within 24-48 hours. For urgent inquiries, please call or send an email
-            directly.
+          <p className="text-blue-800">
+            I typically respond to messages within 24-48 hours.
+            For urgent inquiries, please call or send an email directly.
           </p>
         </motion.div>
       </motion.div>
     </div>
-  )
-}
+  );
+};

@@ -1,8 +1,8 @@
-import { NextResponse } from 'next/server';
-import { db } from '@/db';
-import { posts, postStatusEnum } from '@/db/schema';
 import { eq } from 'drizzle-orm';
+import { NextResponse } from 'next/server';
 import { z } from 'zod';
+import { db } from '@/db';
+import { postStatusEnum, posts } from '@/db/schema';
 
 // Zod schema for post update (all fields optional)
 const updatePostSchema = z.object({
@@ -11,17 +11,10 @@ const updatePostSchema = z.object({
   status: z.enum(postStatusEnum.enumValues).optional(),
 });
 
-// The context for route handlers in App Router contains params
-interface RouteContext {
-  params: {
-    id: string;
-  };
-}
-
-export async function GET(request: Request, context: RouteContext) {
+export async function GET(request: Request, { params }: { params: { id: string } }) {
   try {
-    const postId = parseInt(context.params.id, 10);
-    if (isNaN(postId)) {
+    const postId = parseInt(params.id, 10);
+    if (Number.isNaN(postId)) {
       return NextResponse.json({ error: 'Invalid post ID' }, { status: 400 });
     }
 
@@ -40,10 +33,10 @@ export async function GET(request: Request, context: RouteContext) {
   }
 }
 
-export async function PUT(request: Request, { params }: Params) {
+export async function PUT(request: Request, { params }: { params: { id: string } }) {
   try {
     const postId = parseInt(params.id, 10);
-    if (isNaN(postId)) {
+    if (Number.isNaN(postId)) {
       return NextResponse.json({ error: 'Invalid post ID' }, { status: 400 });
     }
 
@@ -82,10 +75,10 @@ export async function PUT(request: Request, { params }: Params) {
   }
 }
 
-export async function DELETE(request: Request, { params }: Params) {
+export async function DELETE(request: Request, { params }: { params: { id: string } }) {
   try {
     const postId = parseInt(params.id, 10);
-    if (isNaN(postId)) {
+    if (Number.isNaN(postId)) {
       return NextResponse.json({ error: 'Invalid post ID' }, { status: 400 });
     }
 

@@ -8,13 +8,40 @@ import { notFound } from "next/navigation";
 import { useId } from "react";
 import { useForm } from "react-hook-form";
 import { type ContactFormValues, contactSchema } from "./schema";
-import { booksData } from "@/lib/data/books"; // Import the consolidated books data
 
-export default function Page({ params }: { params: { slug: string } }) {
+const books = {
+	"to-vow-or-not-to-vow": {
+		title: "To Vow or Not to Vow",
+		cover: "/books/vow-cover.jpg",
+		description:
+			"A cultural exploration of marriage vows and modern relationships.",
+		details:
+			"Dive into the complexities of commitment in a rapidly evolving world. This book blends research, personal anecdotes, and cultural analysis to question the relevance of traditional vows.",
+		buyLink:
+			"https://www.amazon.com/Vow-Not-Knowing-Implications-Vows/dp/1460007786/",
+	},
+	"behind-closed-doors": {
+		title: "Behind Closed Doors: Guarding Your Dreams",
+		cover: "/books/guarding-dreams.jpg",
+		description:
+			"A guide to nurturing unspoken aspirations and overcoming self-doubt.",
+		details:
+			"Margaret’s latest work explores the power of unspoken dreams and how to protect them from external pressures.",
+		buyLink:
+			"https://www.amazon.com/Behind-Closed-Doors-Guarding-Dreams-ebook/dp/B0CKWH6RCC/",
+	},
+};
+
+export default async function Page({ params }: { params: { slug: string } }) {
 	const nameId = useId();
 	const emailId = useId();
 	const messageId = useId();
-	const book = booksData[params.slug]; // Directly access book by slug
+	// Convert books object to an array with slug
+	const booksArr = Object.entries(books).map(([slug, data]) => ({
+		slug,
+		...data,
+	}));
+	const book = booksArr.find((b) => b.slug === params.slug);
 	if (!book) {
 		notFound();
 	}
@@ -89,8 +116,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 							<input
 								{...register("name")}
 								id={nameId}
-								className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500"
-								placeholder="Your Name"
+								className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
 							/>
 							{errors.name && (
 								<p className="text-red-500 text-sm mt-1">
@@ -106,8 +132,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 								{...register("email")}
 								id={emailId}
 								type="email"
-								className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500"
-								placeholder="you@example.com"
+								className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
 							/>
 							{errors.email && (
 								<p className="text-red-500 text-sm mt-1">
@@ -123,8 +148,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 								{...register("message")}
 								id={messageId}
 								rows={4}
-								className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 placeholder-gray-500"
-								placeholder="Your question or message..."
+								className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
 							></textarea>
 							{errors.message && (
 								<p className="text-red-500 text-sm mt-1">

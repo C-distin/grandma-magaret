@@ -3,7 +3,21 @@
 import { motion } from "framer-motion"
 import { BookOpen, ExternalLink } from "lucide-react"
 import Link from "next/link"
-import { bookList } from "@/lib/data/books"; // Import the consolidated book list
+
+const books = [
+  {
+    slug: "to-vow-or-not-to-vow",
+    title: "To Vow or Not to Vow",
+    cover: "/books/vow-cover.jpg",
+    description: "A cultural exploration of marriage vows and modern relationships.",
+  },
+  {
+    slug: "behind-closed-doors",
+    title: "Behind Closed Doors: Guarding Your Dreams",
+    cover: "/books/guarding-dreams.jpg",
+    description: "A guide to nurturing unspoken aspirations and overcoming self-doubt.",
+  },
+]
 
 export function BooksPage() {
   return (
@@ -28,7 +42,7 @@ export function BooksPage() {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 mb-10">Featured Books</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {bookList.map((book, index) => (
+            {books.map((book, index) => (
               <motion.div
                 key={book.slug}
                 initial={{ y: 50, opacity: 0 }}
@@ -59,18 +73,18 @@ export function BooksPage() {
           <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Inspiration & Tools</h2>
           <p className="text-gray-700 mb-6">
             Margaret’s books are crafted using a blend of traditional storytelling and modern tools. Platforms like{" "}
-            <a href="https://www.storyjumper.com" target="_blank" className="text-purple-700 hover:underline">
+            <a href="https://www.storyjumper.com" target="_blank" className="text-purple-600 hover:underline">
               StoryJumper
             </a>
             and{" "}
-            <a href="https://www.canva.com/ebook-maker/" target="_blank" className="text-purple-700 hover:underline">
+            <a href="https://www.canva.com/ebook-maker/" target="_blank" className="text-purple-600 hover:underline">
               Canva’s eBook Maker
             </a>
             inspire her creative process.
           </p>
           <p className="text-gray-700">
             For self-publishing, she recommends{" "}
-            <a href="https://www.lulu.com" target="_blank" className="text-purple-700 hover:underline">
+            <a href="https://www.lulu.com" target="_blank" className="text-purple-600 hover:underline">
               Lulu
             </a>
             for affordable print-on-demand services.
