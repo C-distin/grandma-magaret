@@ -11,15 +11,16 @@ const updatePostSchema = z.object({
   status: z.enum(postStatusEnum.enumValues).optional(),
 });
 
-interface Params {
+// The context for route handlers in App Router contains params
+interface RouteContext {
   params: {
     id: string;
   };
 }
 
-export async function GET(request: Request, { params }: Params) {
+export async function GET(request: Request, context: RouteContext) {
   try {
-    const postId = parseInt(params.id, 10);
+    const postId = parseInt(context.params.id, 10);
     if (isNaN(postId)) {
       return NextResponse.json({ error: 'Invalid post ID' }, { status: 400 });
     }

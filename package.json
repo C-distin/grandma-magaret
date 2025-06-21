@@ -20,7 +20,6 @@
     "motion": "^12.16.0",
     "next": "15.3.3",
     "pg": "^8.16.2",
-    "postgres": "latest",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.57.0",
