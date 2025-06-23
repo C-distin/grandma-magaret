@@ -16,14 +16,24 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const status = searchParams.get('status');
 
-    let query = db.select().from(posts).orderBy(desc(posts.createdAt));
-
-    // Filter by status if provided
+    // Build the query conditionally
+    let allPosts;
+    
     if (status && postStatusEnum.enumValues.includes(status as any)) {
-      query = db.select().from(posts).where(eq(posts.status, status as any)).orderBy(desc(posts.createdAt));
+      // Query with status filter
+      allPosts = await db
+        .select()
+        .from(posts)
+        .where(eq(posts.status, status as any))
+        .orderBy(desc(posts.createdAt));
+    } else {
+      // Query without filter
+      allPosts = await db
+        .select()
+        .from(posts)
+        .orderBy(desc(posts.createdAt));
     }
 
-    const allPosts = await query;
     return NextResponse.json(allPosts);
   } catch (error) {
     console.error('Error fetching posts:', error);
