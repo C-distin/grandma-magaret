@@ -1,8 +1,8 @@
 import { eq } from 'drizzle-orm';
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
-import { db } from '@/db';
-import { postStatusEnum, posts } from '@/db/schema';
+import { db } from '@/lib/db';
+import { postStatusEnum, posts } from '@/lib/db/schema';
 
 // Zod schema for post update (all fields optional)
 const updatePostSchema = z.object({

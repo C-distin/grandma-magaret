@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/db';
-import { posts, postStatusEnum } from '@/db/schema';
+import { db } from '@/lib/db';
+import { posts, postStatusEnum } from '@/lib/db/schema';
 import { eq, desc } from 'drizzle-orm';
 import { z } from 'zod';
 
