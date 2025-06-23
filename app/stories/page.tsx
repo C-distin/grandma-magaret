@@ -3,6 +3,13 @@
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { Loader2, AlertTriangle, CalendarDays, Eye } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Stories - Margaret Kuofie",
+  description: "Stories by Margaret Kuofie - Author & Storyteller",
+};
+
 
 // Define Post type based on expected API response / schema.ts
 interface Post {

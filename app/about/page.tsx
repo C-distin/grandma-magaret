@@ -1,4 +1,10 @@
 import { AboutPage } from "./about";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About - Margaret Kuofie",
+  description: "About Margaret Kuofie - Author & Storyteller",
+};
 
 export default function Page() {
   return (

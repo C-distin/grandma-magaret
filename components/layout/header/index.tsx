@@ -6,9 +6,6 @@ import { motion } from "motion/react";
 import {
   Menu,
   X,
-  BookOpen,
-  PenTool,
-  Settings
 } from "lucide-react";
 
 interface NavItem {
@@ -47,9 +44,6 @@ export function Header() {
             className="flex items-center gap-3"
           >
             <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
-                <BookOpen className="text-white" size={20} />
-              </div>
               <div>
                 <h1 className="text-xl font-bold text-slate-800">Margaret Kuofie</h1>
                 <p className="text-xs text-slate-600 -mt-1">Author & Storyteller</p>
@@ -81,23 +75,12 @@ export function Header() {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <Link href="/dashboard">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 text-slate-700 hover:text-blue-600 px-3 py-2 rounded-lg font-medium transition-colors"
-              >
-                <Settings size={16} />
-                Dashboard
-              </motion.button>
-            </Link>
             <Link href="/contact">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
               >
-                <PenTool size={16} />
                 Get In Touch
               </motion.button>
             </Link>
@@ -108,6 +91,7 @@ export function Header() {
             onClick={toggleMobileMenu}
             className="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
             aria-label="Toggle mobile menu"
+            type="button"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -135,15 +119,8 @@ export function Header() {
               </Link>
             ))}
             <div className="px-4 pt-2 space-y-2">
-              <Link href="/dashboard">
-                <button className="w-full flex items-center justify-center gap-2 text-slate-700 hover:text-blue-600 px-4 py-2 rounded-lg font-medium transition-colors border border-slate-300">
-                  <Settings size={16} />
-                  Dashboard
-                </button>
-              </Link>
               <Link href="/contact">
-                <button className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
-                  <PenTool size={16} />
+                <button className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors" type="button">
                   Get In Touch
                 </button>
               </Link>

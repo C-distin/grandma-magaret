@@ -309,7 +309,7 @@ export default function HomePage() {
                 real-world application.
               </p>
               
-              <div className="space-y-4 mb-8">
+              {/* <div className="space-y-4 mb-8">
                 <div className="flex items-start gap-4">
                   <div className="w-2 h-2 bg-indigo-600 rounded-full mt-3"></div>
                   <div>
@@ -324,7 +324,7 @@ export default function HomePage() {
                     <p className="text-gray-600">Nurturing unspoken aspirations in a challenging world</p>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/speaking">
@@ -380,7 +380,7 @@ export default function HomePage() {
       </motion.section>
 
       {/* Latest Stories Preview */}
-      <motion.section
+      {/* <motion.section
         className="py-20 px-6 bg-gray-50"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -438,7 +438,7 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
-      </motion.section>
+      </motion.section> */}
 
       {/* CTA Section */}
       <motion.section

@@ -9,8 +9,7 @@ import {
   Linkedin,
   Facebook,
   ArrowUp,
-  Heart,
-  BookOpen
+  Heart
 } from "lucide-react";
 
 interface SocialLink {
@@ -62,8 +61,6 @@ export function Footer() {
     "Connect": [
       { name: "Contact", href: "/contact" },
       { name: "Newsletter", href: "/newsletter" },
-      { name: "Book Clubs", href: "/book-clubs" },
-      { name: "Media Kit", href: "/media-kit" },
     ],
     "Resources": [
       { name: "Writing Tips", href: "/writing-tips" },
@@ -125,9 +122,6 @@ export function Footer() {
             {/* Author Info */}
             <div className="lg:col-span-2">
               <Link href="/" className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
-                  <BookOpen className="text-white" size={24} />
-                </div>
                 <div>
                   <h2 className="text-2xl font-bold">Margaret Kuofie</h2>
                   <p className="text-slate-400">Author & Storyteller</p>
@@ -183,7 +177,7 @@ export function Footer() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
               <div className="flex items-center gap-2 text-slate-400 text-sm">
-                <span>© 2025 Margaret Kuofie. All rights reserved.</span>
+                <span>© {new Date().getFullYear()} Margaret Kuofie. All rights reserved.</span>
               </div>
               <div className="flex items-center gap-2 text-slate-400 text-sm">
                 <span>Made with</span>
