@@ -4,12 +4,6 @@ import { useState, useEffect, useCallback } from 'react';
 import { useParams, useRouter } from 'next/navigation'; // useRouter for back navigation
 import Link from 'next/link';
 import { Loader2, AlertTriangle, CalendarDays, ArrowLeft, UserCircle } from 'lucide-react';
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: "Stories - Margaret Kuofie",
-  description: "Stories by Margaret Kuofie - Author & Storyteller",
-};
 
 
 // Define Post type based on expected API response / schema.ts

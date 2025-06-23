@@ -8,12 +8,7 @@ import { notFound } from "next/navigation";
 import { useId, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { type ContactFormValues, contactSchema } from "./schema";
-import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-	title: "Book Details - Margaret Kuofie",
-	description: "Detailed view of a book by Margaret Kuofie, including cover, description, and purchase link.",
-};
 
 const books = {
 	"to-vow-or-not-to-vow": {
