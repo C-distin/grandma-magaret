@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/db';
 import { posts, postStatusEnum } from '@/db/schema';
-import { eq, SQL } from 'drizzle-orm';
+import { eq, desc } from 'drizzle-orm';
 import { z } from 'zod';
 
 // Zod schema for post creation
@@ -11,11 +11,19 @@ const createPostSchema = z.object({
   status: z.enum(postStatusEnum.enumValues).optional().default('draft'),
 });
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    const allPosts = await db.query.posts.findMany({
-      orderBy: (posts, { desc }) => [desc(posts.createdAt)],
-    });
+    const { searchParams } = new URL(request.url);
+    const status = searchParams.get('status');
+
+    let query = db.select().from(posts).orderBy(desc(posts.createdAt));
+
+    // Filter by status if provided
+    if (status && postStatusEnum.enumValues.includes(status as any)) {
+      query = db.select().from(posts).where(eq(posts.status, status as any)).orderBy(desc(posts.createdAt));
+    }
+
+    const allPosts = await query;
     return NextResponse.json(allPosts);
   } catch (error) {
     console.error('Error fetching posts:', error);
@@ -39,7 +47,7 @@ export async function POST(request: Request) {
       .values({
         title,
         content,
-        status: status || 'draft', // Ensure status has a default
+        status: status || 'draft',
         // createdAt and updatedAt will use database defaults
       })
       .returning();
