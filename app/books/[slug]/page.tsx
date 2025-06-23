@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { BookOpen } from "lucide-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { useId } from "react";
+import { useId, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { type ContactFormValues, contactSchema } from "./schema";
 
@@ -26,25 +26,45 @@ const books = {
 		description:
 			"A guide to nurturing unspoken aspirations and overcoming self-doubt.",
 		details:
-			"Margaret’s latest work explores the power of unspoken dreams and how to protect them from external pressures.",
+			"Margaret's latest work explores the power of unspoken dreams and how to protect them from external pressures.",
 		buyLink:
 			"https://www.amazon.com/Behind-Closed-Doors-Guarding-Dreams-ebook/dp/B0CKWH6RCC/",
 	},
 };
 
-export default async function Page({ params }: { params: { slug: string } }) {
+interface PageProps {
+	params: Promise<{ slug: string }>;
+}
+
+export default function Page({ params }: PageProps) {
 	const nameId = useId();
 	const emailId = useId();
 	const messageId = useId();
-	// Convert books object to an array with slug
-	const booksArr = Object.entries(books).map(([slug, data]) => ({
-		slug,
-		...data,
-	}));
-	const book = booksArr.find((b) => b.slug === params.slug);
-	if (!book) {
-		notFound();
-	}
+	
+	const [slug, setSlug] = useState<string | null>(null);
+	const [book, setBook] = useState<typeof books[keyof typeof books] | null>(null);
+
+	// Resolve params asynchronously
+	useEffect(() => {
+		const resolveParams = async () => {
+			const resolvedParams = await params;
+			setSlug(resolvedParams.slug);
+			
+			// Convert books object to an array with slug
+			const booksArr = Object.entries(books).map(([slug, data]) => ({
+				slug,
+				...data,
+			}));
+			
+			const foundBook = booksArr.find((b) => b.slug === resolvedParams.slug);
+			if (!foundBook) {
+				notFound();
+			}
+			setBook(foundBook);
+		};
+
+		resolveParams();
+	}, [params]);
 
 	const {
 		register,
@@ -57,6 +77,18 @@ export default async function Page({ params }: { params: { slug: string } }) {
 	const onSubmit = (data: ContactFormValues) => {
 		console.log("Form submitted:", data);
 	};
+
+	// Show loading state while resolving params
+	if (!slug || !book) {
+		return (
+			<div className="min-h-screen bg-gray-50 flex items-center justify-center">
+				<div className="text-center">
+					<div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
+					<p className="text-gray-600">Loading...</p>
+				</div>
+			</div>
+		);
+	}
 
 	return (
 		<div className="min-h-screen bg-gray-50">
@@ -92,6 +124,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 							<a
 								href={book.buyLink}
 								target="_blank"
+								rel="noopener noreferrer"
 								className="inline-flex items-center gap-2 bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold"
 							>
 								<BookOpen size={20} />
