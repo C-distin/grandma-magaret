@@ -7,7 +7,8 @@ import {
   Menu,
   X,
   BookOpen,
-  PenTool
+  PenTool,
+  Settings
 } from "lucide-react";
 
 interface NavItem {
@@ -22,7 +23,7 @@ export function Header() {
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Books", href: "/books" },
-    { name: "Blog", href: "/blog" },
+    { name: "Stories", href: "/stories" },
     { name: "Speaking", href: "/speaking" },
     { name: "Contact", href: "/contact" },
   ];
@@ -78,17 +79,29 @@ export function Header() {
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <Link href="/contact">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="hidden md:flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
-            >
-              <PenTool size={16} />
-              Get In Touch
-            </motion.button>
-          </Link>
+          {/* CTA Buttons */}
+          <div className="hidden md:flex items-center gap-3">
+            <Link href="/dashboard">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 text-slate-700 hover:text-blue-600 px-3 py-2 rounded-lg font-medium transition-colors"
+              >
+                <Settings size={16} />
+                Dashboard
+              </motion.button>
+            </Link>
+            <Link href="/contact">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+              >
+                <PenTool size={16} />
+                Get In Touch
+              </motion.button>
+            </Link>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -121,7 +134,13 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
-            <div className="px-4 pt-2">
+            <div className="px-4 pt-2 space-y-2">
+              <Link href="/dashboard">
+                <button className="w-full flex items-center justify-center gap-2 text-slate-700 hover:text-blue-600 px-4 py-2 rounded-lg font-medium transition-colors border border-slate-300">
+                  <Settings size={16} />
+                  Dashboard
+                </button>
+              </Link>
               <Link href="/contact">
                 <button className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
                   <PenTool size={16} />
