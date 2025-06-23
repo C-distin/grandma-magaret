@@ -115,10 +115,6 @@ export default function StoriesPage() {
           </div>
         )}
       </main>
-
-      <footer className="text-center mt-16 py-8 border-t border-gray-200">
-        <p className="text-gray-500">&copy; {new Date().getFullYear()} Your Company. All rights reserved.</p>
-      </footer>
     </div>
   );
 }
