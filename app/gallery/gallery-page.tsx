@@ -1,7 +1,10 @@
 import Image from "next/image"
 
 interface GalleryProps {
-  images: string[]
+  images: {
+    key: string
+    url: string
+  }[]
 }
 
 export function Gallery({ images }: GalleryProps) {
@@ -16,8 +19,8 @@ export function Gallery({ images }: GalleryProps) {
   return (
     <main className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6">
       {images.map((image) => (
-        <div key={image} className="relative w-full aspect-square rounded overflow-hidden">
-          <Image src={url} alt={image} fill className="object-cover shadow-lg transition-shadow duration-300" />
+        <div key={image.key} className="relative w-full aspect-square rounded overflow-hidden">
+          <Image src={image.url} alt={image.key} fill className="object-cover shadow-lg transition-shadow duration-300" />
         </div>
       ))}
     </main>

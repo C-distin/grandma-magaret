@@ -18,6 +18,7 @@ export function Header() {
     { name: "About", href: "/about" },
     { name: "Books", href: "/books" },
     { name: "Stories", href: "/stories" },
+    { name: "Gallery", href: "/gallery" },
     { name: "Speaking", href: "/speaking" },
     { name: "Contact", href: "/contact" },
   ]
