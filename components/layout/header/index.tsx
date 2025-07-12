@@ -1,20 +1,17 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import Link from "next/link";
-import { motion } from "motion/react";
-import {
-  Menu,
-  X,
-} from "lucide-react";
+import { Menu, X } from "lucide-react"
+import { motion } from "motion/react"
+import Link from "next/link"
+import { useState } from "react"
 
 interface NavItem {
-  name: string;
-  href: string;
+  name: string
+  href: string
 }
 
 export function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const navItems: NavItem[] = [
     { name: "Home", href: "/" },
@@ -23,11 +20,11 @@ export function Header() {
     { name: "Stories", href: "/stories" },
     { name: "Speaking", href: "/speaking" },
     { name: "Contact", href: "/contact" },
-  ];
+  ]
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
 
   return (
     <motion.header
@@ -39,10 +36,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Name */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex items-center gap-3"
-          >
+          <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-3">
             <Link href="/" className="flex items-center gap-3">
               <div>
                 <h1 className="text-xl font-bold text-slate-800">Margaret Kuofie</h1>
@@ -64,9 +58,7 @@ export function Header() {
                   href={item.href}
                   className="text-slate-700 hover:text-blue-600 font-medium transition-colors relative group"
                 >
-                  <motion.span whileHover={{ y: -2 }}>
-                    {item.name}
-                  </motion.span>
+                  <motion.span whileHover={{ y: -2 }}>{item.name}</motion.span>
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full" />
                 </Link>
               </motion.div>
@@ -120,7 +112,10 @@ export function Header() {
             ))}
             <div className="px-4 pt-2 space-y-2">
               <Link href="/contact">
-                <button className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors" type="button">
+                <button
+                  className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+                  type="button"
+                >
                   Get In Touch
                 </button>
               </Link>
@@ -129,5 +124,5 @@ export function Header() {
         </motion.div>
       </div>
     </motion.header>
-  );
-};
+  )
+}

@@ -1,20 +1,9 @@
-"use client";
+"use client"
 
-import { motion } from "motion/react";
-import Link from "next/link";
-import Image from "next/image";
-import { 
-  BookOpen, 
-  Mic, 
-  PenTool, 
-  ArrowRight, 
-  Quote,
-  Calendar,
-  Mail,
-  Star,
-  Users,
-  Award
-} from "lucide-react";
+import { ArrowRight, Award, BookOpen, Calendar, Mail, Mic, Quote, Star, Users } from "lucide-react"
+import { motion } from "motion/react"
+import Image from "next/image"
+import Link from "next/link"
 
 export default function HomePage() {
   const containerVariants = {
@@ -25,12 +14,12 @@ export default function HomePage() {
         staggerChildren: 0.1,
       },
     },
-  };
+  }
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
-  };
+  }
 
   const books = [
     {
@@ -45,14 +34,14 @@ export default function HomePage() {
       cover: "/books/guarding-dreams.jpg",
       description: "A guide to nurturing unspoken aspirations and overcoming self-doubt.",
     },
-  ];
+  ]
 
   const stats = [
     { number: "2", label: "Published Books", icon: BookOpen },
     { number: "50+", label: "Speaking Events", icon: Mic },
     { number: "10+", label: "Years Experience", icon: Award },
     { number: "1000+", label: "Readers Inspired", icon: Users },
-  ];
+  ]
 
   return (
     <div className="min-h-screen bg-white">
@@ -78,26 +67,17 @@ export default function HomePage() {
               animate="visible"
               className="text-center lg:text-left"
             >
-              <motion.h1 
-                variants={itemVariants}
-                className="text-5xl md:text-6xl font-bold mb-6 leading-tight"
-              >
+              <motion.h1 variants={itemVariants} className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
                 Margaret E. Kuofie
               </motion.h1>
-              <motion.p 
-                variants={itemVariants}
-                className="text-xl md:text-2xl mb-4 text-blue-100"
-              >
+              <motion.p variants={itemVariants} className="text-xl md:text-2xl mb-4 text-blue-100">
                 Author | Clinical Research Professional | Storyteller
               </motion.p>
-              <motion.p 
-                variants={itemVariants}
-                className="text-lg mb-8 text-blue-50 max-w-2xl"
-              >
-                Crafting stories that bridge science and humanity, exploring themes of identity, 
-                resilience, and cultural duality through compelling narratives.
+              <motion.p variants={itemVariants} className="text-lg mb-8 text-blue-50 max-w-2xl">
+                Crafting stories that bridge science and humanity, exploring themes of identity, resilience, and
+                cultural duality through compelling narratives.
               </motion.p>
-              <motion.div 
+              <motion.div
                 variants={itemVariants}
                 className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               >
@@ -189,12 +169,13 @@ export default function HomePage() {
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-6">About Margaret</h2>
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                Margaret E. Kuofie is a certified clinical research professional with over a decade of experience in healthcare. 
-                Her writing blends scientific rigor with emotional depth, exploring themes of identity, resilience, and cultural duality.
+                Margaret E. Kuofie is a certified clinical research professional with over a decade of experience in
+                healthcare. Her writing blends scientific rigor with emotional depth, exploring themes of identity,
+                resilience, and cultural duality.
               </p>
               <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                As the author of "To Vow or Not to Vow" and "Behind Closed Doors: Guarding Your Dreams", 
-                she empowers readers to embrace their unspoken aspirations and navigate the complexities of modern life.
+                As the author of "To Vow or Not to Vow" and "Behind Closed Doors: Guarding Your Dreams", she empowers
+                readers to embrace their unspoken aspirations and navigate the complexities of modern life.
               </p>
               <Link href="/about">
                 <motion.button
@@ -211,8 +192,8 @@ export default function HomePage() {
               <div className="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-2xl p-8">
                 <Quote className="text-indigo-600 mb-4" size={32} />
                 <blockquote className="text-xl text-gray-800 italic mb-4">
-                  "Writing is my way of bridging the gap between scientific understanding and human emotion, 
-                  creating stories that resonate across cultures and experiences."
+                  "Writing is my way of bridging the gap between scientific understanding and human emotion, creating
+                  stories that resonate across cultures and experiences."
                 </blockquote>
                 <cite className="text-indigo-600 font-semibold">— Margaret E. Kuofie</cite>
               </div>
@@ -304,11 +285,11 @@ export default function HomePage() {
             <div className="order-2 lg:order-1">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">Speaking Engagements</h2>
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                Margaret brings her unique perspective to audiences worldwide, combining scientific insight 
-                with storytelling to inspire and educate. Her talks bridge the gap between research and 
-                real-world application.
+                Margaret brings her unique perspective to audiences worldwide, combining scientific insight with
+                storytelling to inspire and educate. Her talks bridge the gap between research and real-world
+                application.
               </p>
-              
+
               {/* <div className="space-y-4 mb-8">
                 <div className="flex items-start gap-4">
                   <div className="w-2 h-2 bg-indigo-600 rounded-full mt-3"></div>
@@ -357,7 +338,7 @@ export default function HomePage() {
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">Featured Talk</h3>
                   <p className="text-gray-600">"The Science of Storytelling"</p>
                 </div>
-                
+
                 <div className="bg-white rounded-lg p-6 shadow-sm">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center">
@@ -369,8 +350,8 @@ export default function HomePage() {
                     </div>
                   </div>
                   <blockquote className="text-gray-700 italic">
-                    "Margaret's blend of scientific insight and storytelling transformed our event! 
-                    Her ability to connect research with human experience is truly remarkable."
+                    "Margaret's blend of scientific insight and storytelling transformed our event! Her ability to
+                    connect research with human experience is truly remarkable."
                   </blockquote>
                 </div>
               </div>
@@ -451,8 +432,8 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-6">Let's Connect</h2>
           <p className="text-xl mb-8 text-blue-100">
-            Whether you're interested in my books, want to book a speaking engagement, 
-            or simply want to share your thoughts, I'd love to hear from you.
+            Whether you're interested in my books, want to book a speaking engagement, or simply want to share your
+            thoughts, I'd love to hear from you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact">
@@ -479,5 +460,5 @@ export default function HomePage() {
         </div>
       </motion.section>
     </div>
-  );
+  )
 }

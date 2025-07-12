@@ -1,74 +1,68 @@
-"use client";
+"use client"
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { motion } from "motion/react";
-import {
-  Twitter,
-  Instagram,
-  Linkedin,
-  Facebook,
-  ArrowUp,
-  Heart
-} from "lucide-react";
+import { ArrowUp, Facebook, Heart, Instagram, Linkedin, Twitter } from "lucide-react"
+import { motion } from "motion/react"
+import Link from "next/link"
+import type React from "react"
+import { useEffect, useState } from "react"
 
 interface SocialLink {
-  name: string;
-  icon: React.ComponentType<{ size?: number }>;
-  href: string;
-  color: string;
+  name: string
+  icon: React.ComponentType<{ size?: number }>
+  href: string
+  color: string
 }
 
 interface FooterLink {
-  name: string;
-  href: string;
+  name: string
+  href: string
 }
 
 interface FooterSection {
-  [key: string]: FooterLink[];
+  [key: string]: FooterLink[]
 }
 
 export function Footer() {
-  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 300);
-    };
+      setShowScrollTop(window.scrollY > 300)
+    }
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
 
   const socialLinks: SocialLink[] = [
     { name: "Twitter", icon: Twitter, href: "https://twitter.com/margaretkuofie", color: "hover:text-blue-400" },
     { name: "Instagram", icon: Instagram, href: "https://instagram.com/margaretkuofie", color: "hover:text-pink-500" },
     { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/in/margaretkuofie", color: "hover:text-blue-600" },
     { name: "Facebook", icon: Facebook, href: "https://facebook.com/margaretkuofie", color: "hover:text-blue-500" },
-  ];
+  ]
 
   const footerLinks: FooterSection = {
-    "Explore": [
+    Explore: [
       { name: "About Me", href: "/about" },
       { name: "My Books", href: "/books" },
       { name: "Blog Posts", href: "/blog" },
       { name: "Speaking Events", href: "/speaking" },
     ],
-    "Connect": [
+    Connect: [
       { name: "Contact", href: "/contact" },
       { name: "Newsletter", href: "/newsletter" },
     ],
-    "Resources": [
+    Resources: [
       { name: "Writing Tips", href: "/writing-tips" },
       { name: "Reading List", href: "/reading-list" },
       { name: "FAQs", href: "/faq" },
       { name: "Privacy Policy", href: "/privacy" },
     ],
-  };
+  }
 
   return (
     <>
@@ -95,8 +89,7 @@ export function Footer() {
             <div className="text-center">
               <h3 className="text-2xl font-bold mb-4">Stay Connected</h3>
               <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-                Get updates on new releases, upcoming events, and exclusive content
-                delivered straight to your inbox.
+                Get updates on new releases, upcoming events, and exclusive content delivered straight to your inbox.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
                 <input
@@ -128,8 +121,7 @@ export function Footer() {
                 </div>
               </Link>
               <p className="text-slate-300 mb-6 leading-relaxed">
-                Crafting stories that bridge cultures and touch hearts.
-                Based in Ghana, writing for the world.
+                Crafting stories that bridge cultures and touch hearts. Based in Ghana, writing for the world.
               </p>
 
               {/* Social Links */}
@@ -158,10 +150,7 @@ export function Footer() {
                 <ul className="space-y-2">
                   {links.map((link) => (
                     <li key={link.name}>
-                      <Link
-                        href={link.href}
-                        className="text-slate-400 hover:text-white transition-colors"
-                      >
+                      <Link href={link.href} className="text-slate-400 hover:text-white transition-colors">
                         {link.name}
                       </Link>
                     </li>
@@ -189,5 +178,5 @@ export function Footer() {
         </div>
       </footer>
     </>
-  );
-};
+  )
+}

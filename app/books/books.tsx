@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { BookOpen, ExternalLink } from "lucide-react"
+import { ExternalLink } from "lucide-react"
 import Link from "next/link"
 
 const books = [
@@ -73,18 +73,28 @@ export function BooksPage() {
           <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Inspiration & Tools</h2>
           <p className="text-gray-700 mb-6">
             Margaret’s books are crafted using a blend of traditional storytelling and modern tools. Platforms like{" "}
-            <a href="https://www.storyjumper.com" target="_blank" className="text-purple-600 hover:underline">
+            <a
+              href="https://www.storyjumper.com"
+              target="_blank"
+              className="text-purple-600 hover:underline"
+              rel="noopener"
+            >
               StoryJumper
             </a>
             and{" "}
-            <a href="https://www.canva.com/ebook-maker/" target="_blank" className="text-purple-600 hover:underline">
+            <a
+              href="https://www.canva.com/ebook-maker/"
+              target="_blank"
+              className="text-purple-600 hover:underline"
+              rel="noopener"
+            >
               Canva’s eBook Maker
             </a>
             inspire her creative process.
           </p>
           <p className="text-gray-700">
             For self-publishing, she recommends{" "}
-            <a href="https://www.lulu.com" target="_blank" className="text-purple-600 hover:underline">
+            <a href="https://www.lulu.com" target="_blank" className="text-purple-600 hover:underline" rel="noopener">
               Lulu
             </a>
             for affordable print-on-demand services.

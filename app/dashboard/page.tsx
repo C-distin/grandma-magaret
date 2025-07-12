@@ -1,166 +1,154 @@
-"use client";
+"use client"
 
-import { useState, useEffect, useCallback } from 'react';
-import { motion } from 'motion/react';
-import { 
-  Plus, 
-  Edit, 
-  Trash2, 
-  Eye, 
-  Save, 
-  X, 
-  Search,
-  Filter,
-  Calendar,
-  FileText,
-  BarChart3,
-  Settings
-} from 'lucide-react';
+import { BarChart3, Edit, Eye, FileText, Filter, Plus, Save, Search, Trash2, X } from "lucide-react"
+import { motion } from "motion/react"
+import { useCallback, useEffect, useState } from "react"
 
 // Types
 interface Post {
-  id: number;
-  title: string;
-  content: string;
-  status: "draft" | "published" | "archived";
-  createdAt: string;
-  updatedAt: string;
+  id: number
+  title: string
+  content: string
+  status: "draft" | "published" | "archived"
+  createdAt: string
+  updatedAt: string
 }
 
 interface PostFormData {
-  title: string;
-  content: string;
-  status: "draft" | "published" | "archived";
+  title: string
+  content: string
+  status: "draft" | "published" | "archived"
 }
 
 export default function DashboardPage() {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingPost, setEditingPost] = useState<Post | null>(null);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [statusFilter, setStatusFilter] = useState<string>('all');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [posts, setPosts] = useState<Post[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [editingPost, setEditingPost] = useState<Post | null>(null)
+  const [searchTerm, setSearchTerm] = useState("")
+  const [statusFilter, setStatusFilter] = useState<string>("all")
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   // Form state
   const [formData, setFormData] = useState<PostFormData>({
-    title: '',
-    content: '',
-    status: 'draft'
-  });
+    title: "",
+    content: "",
+    status: "draft",
+  })
 
   // Fetch posts
   const fetchPosts = useCallback(async () => {
-    setIsLoading(true);
+    setIsLoading(true)
     try {
-      const response = await fetch('/api/posts');
+      const response = await fetch("/api/posts")
       if (response.ok) {
-        const data = await response.json();
-        setPosts(data);
+        const data = await response.json()
+        setPosts(data)
       }
     } catch (error) {
-      console.error('Error fetching posts:', error);
+      console.error("Error fetching posts:", error)
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  }, []);
+  }, [])
 
   useEffect(() => {
-    fetchPosts();
-  }, [fetchPosts]);
+    fetchPosts()
+  }, [fetchPosts])
 
   // Filter posts
-  const filteredPosts = posts.filter(post => {
-    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         post.content.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesStatus = statusFilter === 'all' || post.status === statusFilter;
-    return matchesSearch && matchesStatus;
-  });
+  const filteredPosts = posts.filter((post) => {
+    const matchesSearch =
+      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.content.toLowerCase().includes(searchTerm.toLowerCase())
+    const matchesStatus = statusFilter === "all" || post.status === statusFilter
+    return matchesSearch && matchesStatus
+  })
 
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+    e.preventDefault()
+    setIsSubmitting(true)
 
     try {
-      const url = editingPost ? `/api/posts/${editingPost.id}` : '/api/posts';
-      const method = editingPost ? 'PUT' : 'POST';
+      const url = editingPost ? `/api/posts/${editingPost.id}` : "/api/posts"
+      const method = editingPost ? "PUT" : "POST"
 
       const response = await fetch(url, {
         method,
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
-      });
+      })
 
       if (response.ok) {
-        await fetchPosts();
-        closeModal();
+        await fetchPosts()
+        closeModal()
       } else {
-        console.error('Error saving post');
+        console.error("Error saving post")
       }
     } catch (error) {
-      console.error('Error saving post:', error);
+      console.error("Error saving post:", error)
     } finally {
-      setIsSubmitting(false);
+      setIsSubmitting(false)
     }
-  };
+  }
 
   // Handle delete
   const handleDelete = async (id: number) => {
-    if (!confirm('Are you sure you want to delete this post?')) return;
+    if (!confirm("Are you sure you want to delete this post?")) return
 
     try {
       const response = await fetch(`/api/posts/${id}`, {
-        method: 'DELETE',
-      });
+        method: "DELETE",
+      })
 
       if (response.ok) {
-        await fetchPosts();
+        await fetchPosts()
       }
     } catch (error) {
-      console.error('Error deleting post:', error);
+      console.error("Error deleting post:", error)
     }
-  };
+  }
 
   // Modal functions
   const openModal = (post?: Post) => {
     if (post) {
-      setEditingPost(post);
+      setEditingPost(post)
       setFormData({
         title: post.title,
         content: post.content,
         status: post.status,
-      });
+      })
     } else {
-      setEditingPost(null);
+      setEditingPost(null)
       setFormData({
-        title: '',
-        content: '',
-        status: 'draft',
-      });
+        title: "",
+        content: "",
+        status: "draft",
+      })
     }
-    setIsModalOpen(true);
-  };
+    setIsModalOpen(true)
+  }
 
   const closeModal = () => {
-    setIsModalOpen(false);
-    setEditingPost(null);
+    setIsModalOpen(false)
+    setEditingPost(null)
     setFormData({
-      title: '',
-      content: '',
-      status: 'draft',
-    });
-  };
+      title: "",
+      content: "",
+      status: "draft",
+    })
+  }
 
   // Stats
   const stats = {
     total: posts.length,
-    published: posts.filter(p => p.status === 'published').length,
-    drafts: posts.filter(p => p.status === 'draft').length,
-    archived: posts.filter(p => p.status === 'archived').length,
-  };
+    published: posts.filter((p) => p.status === "published").length,
+    drafts: posts.filter((p) => p.status === "draft").length,
+    archived: posts.filter((p) => p.status === "archived").length,
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
@@ -329,13 +317,15 @@ export default function DashboardPage() {
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                          post.status === 'published' 
-                            ? 'bg-green-100 text-green-800'
-                            : post.status === 'draft'
-                            ? 'bg-yellow-100 text-yellow-800'
-                            : 'bg-gray-100 text-gray-800'
-                        }`}>
+                        <span
+                          className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
+                            post.status === "published"
+                              ? "bg-green-100 text-green-800"
+                              : post.status === "draft"
+                                ? "bg-yellow-100 text-yellow-800"
+                                : "bg-gray-100 text-gray-800"
+                          }`}
+                        >
                           {post.status}
                         </span>
                       </td>
@@ -347,7 +337,7 @@ export default function DashboardPage() {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <div className="flex items-center justify-end gap-2">
-                          {post.status === 'published' && (
+                          {post.status === "published" && (
                             <a
                               href={`/stories/${post.id}`}
                               target="_blank"
@@ -357,16 +347,10 @@ export default function DashboardPage() {
                               <Eye size={16} />
                             </a>
                           )}
-                          <button
-                            onClick={() => openModal(post)}
-                            className="text-indigo-600 hover:text-indigo-900"
-                          >
+                          <button onClick={() => openModal(post)} className="text-indigo-600 hover:text-indigo-900">
                             <Edit size={16} />
                           </button>
-                          <button
-                            onClick={() => handleDelete(post.id)}
-                            className="text-red-600 hover:text-red-900"
-                          >
+                          <button onClick={() => handleDelete(post.id)} className="text-red-600 hover:text-red-900">
                             <Trash2 size={16} />
                           </button>
                         </div>
@@ -389,13 +373,8 @@ export default function DashboardPage() {
             className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden"
           >
             <div className="flex items-center justify-between p-6 border-b border-gray-200">
-              <h2 className="text-xl font-semibold text-gray-900">
-                {editingPost ? 'Edit Post' : 'Create New Post'}
-              </h2>
-              <button
-                onClick={closeModal}
-                className="text-gray-400 hover:text-gray-600"
-              >
+              <h2 className="text-xl font-semibold text-gray-900">{editingPost ? "Edit Post" : "Create New Post"}</h2>
+              <button onClick={closeModal} className="text-gray-400 hover:text-gray-600">
                 <X size={24} />
               </button>
             </div>
@@ -474,7 +453,7 @@ export default function DashboardPage() {
                   ) : (
                     <>
                       <Save size={16} />
-                      {editingPost ? 'Update Post' : 'Create Post'}
+                      {editingPost ? "Update Post" : "Create Post"}
                     </>
                   )}
                 </motion.button>
@@ -484,5 +463,5 @@ export default function DashboardPage() {
         </div>
       )}
     </div>
-  );
+  )
 }

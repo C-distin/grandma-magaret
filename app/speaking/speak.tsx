@@ -1,7 +1,7 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Mic, Calendar, Download, ExternalLink } from "lucide-react"
+import { Calendar, Download, Mic } from "lucide-react"
 import { motion } from "motion/react"
 import { useForm } from "react-hook-form"
 import { type BookingFormValues, bookingSchema } from "./schema"
@@ -118,11 +118,11 @@ export function SpeakingPage() {
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">AI-Powered Voice Samples</h2>
           <p className="text-gray-800 mb-6 text-center">
             Margaret uses AI tools like{" "}
-            <a href="https://elevenlabs.io" target="_blank" className="text-purple-800 hover:underline">
+            <a href="https://elevenlabs.io" target="_blank" className="text-purple-800 hover:underline" rel="noopener">
               ElevenLabs
             </a>{" "}
             [[3]] and{" "}
-            <a href="https://www.murfs.ai" target="_blank" className="text-purple-800 hover:underline">
+            <a href="https://www.murfs.ai" target="_blank" className="text-purple-800 hover:underline" rel="noopener">
               Murf AI
             </a>{" "}
             [[6]] to create lifelike audio versions of her work.
@@ -141,6 +141,7 @@ export function SpeakingPage() {
                 href="https://cloud.google.com/text-to-speech"
                 target="_blank"
                 className="text-indigo-800 hover:underline"
+                rel="noopener"
               >
                 Google Cloud Text-to-Speech
               </a>{" "}

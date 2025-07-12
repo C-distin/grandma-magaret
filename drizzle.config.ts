@@ -1,9 +1,9 @@
-import { defineConfig } from "drizzle-kit";
-import { loadEnvConfig } from "@next/env";
+import { loadEnvConfig } from "@next/env"
+import { defineConfig } from "drizzle-kit"
 
-loadEnvConfig(process.cwd());
+loadEnvConfig(process.cwd())
 
-const connectionString = process.env.DATABASE_URL || "";
+const connectionString = process.env.DATABASE_URL || ""
 
 export default defineConfig({
   out: "./db/drizzle/",
@@ -12,4 +12,4 @@ export default defineConfig({
   dbCredentials: {
     url: connectionString,
   },
-});
+})
